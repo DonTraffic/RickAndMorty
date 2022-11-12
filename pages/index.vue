@@ -12,12 +12,3 @@ export default {
   name: 'IndexPage',
 }
 </script>
-
-<style>
-  *{
-    color: azure;
-  }
-  body{
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-</style>
