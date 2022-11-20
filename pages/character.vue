@@ -3,7 +3,12 @@
         <section class="container carts">
 
             <div class="carts__listing" v-if="data.results">
-                <div class="cart" v-for="item of data.results" :key="item.id">
+                <div
+                    class="cart"
+                    v-for="item of data.results"
+                    :key="item.id"
+                    @click='dataModal = item, showCartModal = true'
+                >
                     <img :src="item.image" alt="img" class="cart__img">
                     <p class="cart__name">{{item.name}}</p>
                 </div>
@@ -17,43 +22,57 @@
 
         <Pagination :data="data" @paginationGet="pageGet" :page='page'/>
 
+        <CartModal
+            v-if="showCartModal"
+            @close-modal="showCartModal = false"
+            :dataModal="dataModal"
+        />
+
     </div>
 </template>
 
 <script>
+import CartModal from '~/components/modals/CharacterModal.vue';
+
 export default {
-    name: 'CharacterPage',
+    name: "CharacterPage",
+
     data() {
         return {
             data: [],
-            errors: '',
+            errors: "",
+            page: 1,
 
-            page: 42,
-        }
+            showCartModal: false,
+            dataModal: {},
+
+        };
     },
 
     created: async function () {
-        await this.getData()
+        await this.getData();
     },
 
     methods: {
         async getData() {
-            console.log('get');
-            await this.$axios.$get(`https://rickandmortyapi.com/api/character?page=${this.page}`) 
+            console.log("get");
+            await this.$axios.$get(`https://rickandmortyapi.com/api/character?page=${this.page}`)
                 .then(resp => this.data = resp)
                 .catch(err => this.errors = err.response.data.error);
         },
 
         pageGet(page) {
-            this.page = page
-        }
+            this.page = page;
+        },
 
     },
 
     watch: {
         page() {
-            this.getData()
+            this.getData();
         }
-    }
+    },
+
+    components: { CartModal }
 }
 </script>

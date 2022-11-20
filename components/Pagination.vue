@@ -18,7 +18,7 @@
 
         <div
             class="pagination__count"
-            v-for="(count, index) in (data.info.pages - page) > 6 ? 5 : (data.info.pages - page)"
+            v-for="(count, index) in (data.info.pages - page) > 5 ? 4 : (data.info.pages - page)"
             :key="count"
             :class="{'active': index == 0 }"
             @click="paginationPush(index + page)"
