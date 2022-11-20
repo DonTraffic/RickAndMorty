@@ -1,0 +1,39 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &__button, &__count{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 6px;
+        border: 1px solid $color-second;
+
+        &:hover{
+            cursor: pointer;
+            background-color: $color-second;
+            color: $color-main;
+
+        }
+    }
+
+    &__button{
+        padding: 8px 16px;
+
+    }
+
+    &__count{
+        width: 37px;
+        height: 37px;
+
+    }
+
+    .active{
+        background-color: $color-second;
+        color: $color-main;
+    }
+
+}
