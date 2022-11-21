@@ -1,0 +1,25 @@
+.filters{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 16px;
+
+    &__item{
+        padding: 8px;
+        border: 1px solid $color-second;
+        color: $color-second;
+        border-radius: 6px;
+        width: 100%;
+
+        &:hover{
+            color: $color-main;
+            background-color: $color-second;
+        }
+
+    }
+
+    @include tabs {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+}
