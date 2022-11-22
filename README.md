@@ -2,6 +2,8 @@
 
 ## Build Setup
 
+node-v16.16.0-x64
+
 ```bash
 # install dependencies
 $ npm install
